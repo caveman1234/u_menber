@@ -1,0 +1,19 @@
+{
+  "name": "u_menber",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
+    "gulp-connect": "^5.5.0",
+    "gulp-less": "^3.5.0",
+    "http-proxy-middleware": "^0.18.0"
+  }
+}

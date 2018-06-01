@@ -1,0 +1,22 @@
+body{
+  font-size: 12px;
+}
+*{
+  margin:0;
+  padding: 0;
+}
+.el-form-item{
+  margin-bottom: 0;
+}
+.width-150{
+  width:185px;
+}
+.text-center{
+  text-align: center;
+}
+.mt-10{
+  margin-top: 10px;
+}
+.mb-10{
+  margin-bottom: 10px;
+}
