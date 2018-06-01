@@ -28,8 +28,7 @@ var app = new Vue({
       var AccessToken = "NVZBGUcdzvAkf8nrQDbqueX4TjJ5MpaP2IRmE7Si6WHYgF1C";
       var Secret = "CzwUucfT1RrXhHWKxp35PGYD4BISnmFZ6tVsAQiakvd7MEegJqj8N2yb";
       var cryptoMsg = JSON.stringify(params);
-      // var encrypted = CryptoJS.SHA256(cryptoMsg, Secret).toString();
-      var encrypted = CryptoJS.AES.encrypt(cryptoMsg, Secret);
+      var encrypted = CryptoJS.SHA256(cryptoMsg, Secret).toString();
       var url = "/open/mm/member/checkexist/v1";
       var fullUrl = baseUrl + url + "?access_token=" + AccessToken;
 
