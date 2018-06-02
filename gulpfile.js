@@ -40,16 +40,21 @@ gulp.task("pack:js", function () {
         .pipe(babel({
             presets: ['env']
         }))
-        // .pipe(uglify())
+        .pipe(uglify())
         .pipe(gulp.dest(distName));
     gulp.src("src/js/*.js", { base: "src" })
         .pipe(gulp.dest(distName))
 });
 gulp.task("pack:others", function () {
-    gulp.src(["src/**/*.html", "src/**/*.css"])
+    gulp.src([
+        "src/**/*.html", 
+        "src/**/*.css",
+        "src/css/fonts/*"
+    ],
+    { base: "src" })
         .pipe(gulp.dest(distName));
 });
-gulp.task("pack:all", ["pack:js", "pack:others"])
+gulp.task("pack", ["pack:js", "pack:others"])
 
 
 

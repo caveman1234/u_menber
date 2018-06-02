@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>健康记录</title>
+  <title>健康记录报表</title>
   <meta charset="UTF-8">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="telephone=no,email=no" name="format-detection">
@@ -26,58 +26,58 @@
         <el-button type="primary" size="mini" @click="onSubmit">搜索</el-button>
       </el-form-item>
     </el-form>
-    <h2 class="text-center">健康记录</h2>
+    <h2 class="text-center">健康记录报表</h2>
     <el-table :data="tableData" border style="width: 100%">
-      <el-table-column prop="name" label="档案ID" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="检查日期" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="会员ID" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="会员手机号" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="会员姓名" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="糖尿病风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="缺血性心血管病" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="高血压风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="肺癌风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="带血综合征风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="血脂异常风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="骨质酥松性骨折风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="肥胖症风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="生活方式评估" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="体力活动评估" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="膳食习惯总体评价" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="健康改善行动建议" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="呼吸系统的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="消化系统的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="免疫系统的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="变性疾病危险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="泌尿生殖器和肾脏的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="骨关节风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="心血管系统的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="内分泌系统" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="神经功能危机" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="氧化压力" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="患过敏症的危机" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="潜在的情况" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="感染的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="患皮肤病的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="耳鼻喉的风险" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="血压" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="血糖" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="血氧" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="尿酸" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="总胆固醇" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="血红蛋白" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="体温数据" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="心电数据" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="身高体重" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="腰臀比" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="中医体质" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="限制的饮食" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="推荐的食物" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="体重指数及相关建议重指数及相关建议" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="饮食搭配建议" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="饮食建议" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="经络调理方案" :min-width="elTableColumnWidth"></el-table-column>
-      <el-table-column prop="name" label="健康改善行动建议" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field1" label="档案ID" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field2" label="检查日期" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field3" label="会员ID" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field4" label="会员手机号" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field5" label="会员姓名" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field6" label="糖尿病风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field7" label="缺血性心血管病" min-width="150px"></el-table-column>
+      <el-table-column prop="field8" label="高血压风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field9" label="肺癌风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field10" label="带血综合征风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field11" label="血脂异常风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field12" label="骨质酥松性骨折风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field13" label="肥胖症风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field14" label="生活方式评估" min-width="150px"></el-table-column>
+      <el-table-column prop="field15" label="体力活动评估" min-width="150px"></el-table-column>
+      <el-table-column prop="field16" label="膳食习惯总体评价" min-width="150px"></el-table-column>
+      <el-table-column prop="field17" label="健康改善行动建议" min-width="150px"></el-table-column>
+      <el-table-column prop="field18" label="呼吸系统的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field19" label="消化系统的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field20" label="免疫系统的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field21" label="变性疾病危险" min-width="150px"></el-table-column>
+      <el-table-column prop="field22" label="泌尿生殖器和肾脏的风险" min-width="180px"></el-table-column>
+      <el-table-column prop="field23" label="骨关节风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field24" label="心血管系统的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field25" label="内分泌系统" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field26" label="神经功能危机" min-width="150px"></el-table-column>
+      <el-table-column prop="field27" label="氧化压力" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field28" label="患过敏症的危机" min-width="150px"></el-table-column>
+      <el-table-column prop="field29" label="潜在的情况" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field30" label="感染的风险" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field31" label="患皮肤病的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field32" label="耳鼻喉的风险" min-width="150px"></el-table-column>
+      <el-table-column prop="field33" label="血压" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field34" label="血糖" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field35" label="血氧" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field36" label="尿酸" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field37" label="总胆固醇" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field38" label="血红蛋白" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field39" label="体温数据" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field40" label="心电数据" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field41" label="身高体重" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field42" label="腰臀比" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field43" label="中医体质" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field44" label="限制的饮食" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field45" label="推荐的食物" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field46" label="体重指数及相关建议重指数及相关建议" min-width="260px"></el-table-column>
+      <el-table-column prop="field47" label="饮食搭配建议" min-width="150px"></el-table-column>
+      <el-table-column prop="field48" label="饮食建议" :min-width="elTableColumnWidth"></el-table-column>
+      <el-table-column prop="field48" label="经络调理方案" min-width="150px"></el-table-column>
+      <el-table-column prop="field50" label="健康改善行动建议" min-width="150px"></el-table-column>
     </el-table>
     <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage" :page-sizes="[100, 200, 300, 400]"
       :page-size="100" layout="total, sizes, prev, pager, next, jumper" :total="400">

@@ -1,0 +1,76 @@
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+#u_healthFund {
+  font-size: 12px;
+}
+#u_healthFund .u-search-container {
+  background: white;
+  padding: 15px 10px 0 10px;
+}
+#u_healthFund .mui-table-view {
+  margin-top: 0;
+}
+#u_healthFund .u-list-item .u-list-item-header {
+  display: flex;
+}
+#u_healthFund .u-list-item .u-list-item-header .u-header-left {
+  flex: 1;
+  display: flex;
+}
+#u_healthFund .u-list-item .u-list-item-header .u-header-left .u-header-img {
+  flex: 0 0 40px;
+  background-size: cover;
+  border-radius: 50%;
+  height: 40px;
+}
+#u_healthFund .u-list-item .u-list-item-header .u-header-left .u-header-person {
+  margin-left: 5px;
+  flex: 1;
+}
+#u_healthFund .u-list-item .u-list-item-header .u-header-right {
+  flex: 1;
+}
+#u_healthFund .u-list-item .u-list-item-header .u-header-right .u-total-balance {
+  text-align: right;
+  padding-right: 70px;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell {
+  padding-left: 10px;
+  display: flex;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-type {
+  flex: 0 0 120px;
+  display: flex;
+  align-items: center;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-type .u-type-name {
+  font-size: 16px;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-type .u-type-descript {
+  font-size: 12px;
+  color: white;
+  background: #ef974c;
+  border-radius: 3px;
+  height: 23px;
+  padding: 2px;
+  line-height: 19px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-type .u-type-descript-common-type {
+  background: #a749b7;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-start-balance {
+  flex: 1;
+  align-items: center;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-start-balance .u-start-balance-money {
+  font-size: 14px;
+}
+#u_healthFund .u-list-item .u-list-item-body .u-list-item-body-cell .u-start-balance .u-start-balance-name {
+  font-size: 12px;
+  color: #999;
+}

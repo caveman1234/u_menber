@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>余额查询</title>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
+    <!-- <link rel="stylesheet" href="../../css/element-ui.css"> -->
+    <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="../../css/mui.css/mui.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="u_healthFund">
+        <div class="u-search-container">
+            <div class="mui-input-row mui-search">
+                <input @keyup.enter="serach" type="search" class="mui-input-clear" placeholder="搜索">
+            </div>
+        </div>
+
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell mui-collapse u-list-item">
+                <a class="mui-navigate-right u-list-item-header" href="#">
+                    <div class="u-header-left">
+                        <div :style='{"backgroundImage":"url(./defaultImg.jpeg)"}' class="u-header-img"></div>
+                        <div class="u-header-person">
+                            <div class="u-person-name">张三</div>
+                            <div class="u-person-phone">13666666666</div>
+                        </div>
+                    </div>
+                    <div class="u-header-right">
+                        <div class="u-total-balance">
+                            <div class="u-total-balance-digit">{{100000|formatMoney}}</div>
+                            <div class="u-total-balance-name">总余额</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="mui-collapse-content u-list-item-body">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">生活类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">健康类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">快乐类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">通用类</div>
+                                <div class="u-type-descript u-type-descript-common-type">储值</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse u-list-item">
+                <a class="mui-navigate-right u-list-item-header" href="#">
+                    <div class="u-header-left">
+                        <div :style='{"backgroundImage":"url(./defaultImg.jpeg)"}' class="u-header-img"></div>
+                        <div class="u-header-person">
+                            <div class="u-person-name">张三</div>
+                            <div class="u-person-phone">13666666666</div>
+                        </div>
+                    </div>
+                    <div class="u-header-right">
+                        <div class="u-total-balance">
+                            <div class="u-total-balance-digit">{{100000|formatMoney}}</div>
+                            <div class="u-total-balance-name">总余额</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="mui-collapse-content u-list-item-body">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">生活类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">健康类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">快乐类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">通用类</div>
+                                <div class="u-type-descript u-type-descript-common-type">储值</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="mui-table-view-cell mui-collapse u-list-item">
+                <a class="mui-navigate-right u-list-item-header" href="#">
+                    <div class="u-header-left">
+                        <div :style='{"backgroundImage":"url(./defaultImg.jpeg)"}' class="u-header-img"></div>
+                        <div class="u-header-person">
+                            <div class="u-person-name">张三</div>
+                            <div class="u-person-phone">13666666666</div>
+                        </div>
+                    </div>
+                    <div class="u-header-right">
+                        <div class="u-total-balance">
+                            <div class="u-total-balance-digit">{{100000|formatMoney}}</div>
+                            <div class="u-total-balance-name">总余额</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="mui-collapse-content u-list-item-body">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">生活类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">健康类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">快乐类</div>
+                                <div class="u-type-descript">康养基金</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                        <li class="mui-table-view-cell u-list-item-body-cell">
+                            <div class="u-type">
+                                <div class="u-type-name">通用类</div>
+                                <div class="u-type-descript u-type-descript-common-type">储值</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{3000|formatMoney}}</div>
+                                <div class="u-start-balance-name">期初余额</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{1000|formatMoney}}</div>
+                                <div class="u-start-balance-name">已消费</div>
+                            </div>
+                            <div class="u-start-balance">
+                                <div class="u-start-balance-money">{{2000|formatMoney}}</div>
+                                <div class="u-start-balance-name">余额</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- <script src="../../js/polyfill.js"></script> -->
+<script src="../../js/mui.min.js"></script>
+<script src="../../js/plugin.js"></script>
+<script src="../../js/axios.min.js"></script>
+<script src="../../js/vue.js"></script>
+<!-- <script src="../../js/element-ui.js"></script> -->
+<script src="../../js/util.js"></script>
+<!-- <script src="../../js/crypto-js.js"></script> -->
+<script src="./index.js"></script>
+
+</html>

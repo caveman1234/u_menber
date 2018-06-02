@@ -1,0 +1,44 @@
+#u_healthFund .vip-header {
+  background-color: #e97463;
+  color: whitesmoke;
+}
+#u_healthFund .vip-header .title {
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+}
+#u_healthFund .vip-header .total {
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+}
+#u_healthFund .vip-header .detail {
+  text-align: center;
+  line-height: 25px;
+  border-bottom: 1px solid whitesmoke;
+}
+#u_healthFund .vip-header .refresh {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+#u_healthFund .vip-header .refresh .el-icon-refresh {
+  font-size: 20px;
+  margin-left: 10px;
+}
+#u_healthFund .vip-handle-container .divider {
+  background-color: #ececec;
+  height: 5px;
+}
+#u_healthFund .vip-handle-container .vip-handle-item {
+  line-height: 40px;
+  font-size: 16px;
+  border-bottom: 1px solid #ececec;
+}
+#u_healthFund .vip-handle-container .vip-handle-item .icon-style {
+  color: #e97463;
+  margin-left: 10px;
+  font-weight: bold;
+}
