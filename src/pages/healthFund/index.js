@@ -1,122 +1,103 @@
-var tableData = [
-  {
-    field1:"张三",
-    field2:"13888888881",
-    field3:3000,
-    field4:600,
-    field5:2400,
-    field6:4000,
-    field7:1200,
-    field8:2800,
-    field9:3000,
-    field10:700,
-    field11:2300,
-    field12:1000,
-    field13:1000,
-    field14:1000
-  },
-  {
-    field1:"李四",
-    field2:"13888888882",
-    field3:3000,
-    field4:600,
-    field5:2400,
-    field6:4000,
-    field7:1200,
-    field8:2800,
-    field9:3000,
-    field10:700,
-    field11:2300,
-    field12:1000,
-    field13:1000,
-    field14:1000
-  },
-  {
-    field1:"王五",
-    field2:"13888888883",
-    field3:3000,
-    field4:600,
-    field5:2400,
-    field6:4000,
-    field7:1200,
-    field8:2800,
-    field9:3000,
-    field10:700,
-    field11:2300,
-    field12:1000,
-    field13:1000,
-    field14:1000
-  },
-  {
-    field1:"王六",
-    field2:"13888888884",
-    field3:3000,
-    field4:600,
-    field5:2400,
-    field6:4000,
-    field7:1200,
-    field8:2800,
-    field9:3000,
-    field10:700,
-    field11:2300,
-    field12:1000,
-    field13:1000,
-    field14:1000
-  },
-];
-Vue.use(vuePlugin);
+Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {
     return {
-      currentPage: 0,
+      pagerInfo: {
+        pageIndex: 1,
+        pageSize: 10,
+        totalCount: 0
+      },
       formData: {
         name: '',
         phone: ''
       },
-      tableData: tableData
+      tableData: []
     }
   },
   methods: {
-    func: function () {
-      var url = "/ocm-web/api/base/prod/search-for-purchase-order";
-      var paramsWrap = {
-        params: {
-          prodGroupId: "f5e8aad4-98fa-4d45-a3e7-cf2c1386bf53",
-          customerId: "171b88f4-b36b-4335-b756-0666acc41008"
-        }
+    fetchCustomItem: function () {
+      var _this = this;
+      var params = {
+        // "conditions": [
+        //   { "name": "realname", "value1": "", "type": "string", "op": "like" }
+        // ],
+        "pager": { "pageIndex": 1, "pageSize": 8 }
+      };
+      var encrypted = globalHmacSHA256(params);
+      var url = "/open/mm/memberlevel/query/v1";
+      var fullUrl = url + "?access_token=" + AccessToken;
+      var headerWrap = {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authorization': encrypted,
+        },
+        timeout: 2 * 60 * 1000
       }
-      axios.get(url, paramsWrap)
+      axios.post(fullUrl, params, headerWrap)
         .then(function (res) {
-          //   debugger
-        })
-        .catch(function (res) {
-          //   debugger
-        })
+          var data = res.data.data;
+          console.log("custorm::", res.data)
+        });
     },
     onSubmit: function () {
+      var _this = this;
       var searchParams = this.formData;
-      console.log(searchParams)
-      this.func();
+      var params = {
+        pager: {
+          pageIndex: _this.pagerInfo.pageIndex,
+          pageSize: _this.pagerInfo.pageSize,
+        },
+        conditions: [
+          {
+            name: "realname",
+            value1: searchParams.realname,
+            type: "string",
+            op: "like"
+          },
+          {
+            name: "phone",
+            value1: searchParams.phone,
+            type: "string",
+            op: "like"
+          }
+        ]
+      };
+      var encrypted = globalHmacSHA256(params);
+      var url = "/open/mm/member/query/v1";
+      var fullUrl = url + "?access_token=" + AccessToken;
+      var headerWrap = {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authorization': encrypted,
+        },
+        timeout: 2 * 60 * 1000
+      }
+      axios.post(fullUrl, params, headerWrap)
+        .then(function (res) {
+          var pager = res.data.pager;
+          _this.pagerInfo.totalCount = pager.totalCount;
+          var data = res.data.data;
+          _this.tableData = data;
+        });
     },
     reset: function () {
       var _this = this;
-      this.$refs.searchForm.resetFields();
       Object.keys(this.formData).forEach(function (v) {
         _this.formData[v] = '';
       });
     },
-    handleSizeChange: function (val) {
-      console.log(val);
+    handleSizeChange: function (pageSize) {
+      this.pagerInfo.pageSize = pageSize;
+      this.onSubmit();
     },
-    handleCurrentChange: function (val) {
-      console.log(val);
+    handleCurrentChange: function (pageIndex) {
+      this.pagerInfo.pageIndex = pageIndex;
+      this.onSubmit();
     },
-
   },
   mounted: function () {
-
-
+    this.onSubmit();
   }
 })
 window.app = app;

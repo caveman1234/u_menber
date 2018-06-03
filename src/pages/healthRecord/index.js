@@ -156,7 +156,7 @@ var tableData = [
     field50: "无",
   },
 ];
-Vue.use(vuePlugin);
+Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {
@@ -173,32 +173,21 @@ var app = new Vue({
   methods: {
     onSubmit: function () {
       var searchParams = this.formData;
-
-
-      var params = {
-        "username": "zhangsan",
-        "phone": "13888888888"
-      };
-      var AccessToken = "NVZBGUcdzvAkf8nrQDbqueX4TjJ5MpaP2IRmE7Si6WHYgF1C";
-      var Secret = "CzwUucfT1RrXhHWKxp35PGYD4BISnmFZ6tVsAQiakvd7MEegJqj8N2yb";
-      var cryptoMsg = JSON.stringify(params);
-      var encrypted = CryptoJS.SHA256(cryptoMsg, Secret).toString();
+      var params = { "username": "zhangsan", "phone": "13888888888" };
+      var encrypted = globalHmacSHA256(params);
       var url = "/open/mm/member/checkexist/v1";
-      var fullUrl = baseUrl + url + "?access_token=" + AccessToken;
-
+      var fullUrl = url + "?access_token=" + AccessToken;
       var headerWrap = {
         headers: {
           'Content-Type': 'application/json',
           'X-Authorization': encrypted,
-        }
+        },
+        timeout: 2 * 60 * 1000
       }
-      // axios({
-      //   method: 'post',
-      //   headers: headerWrap,
-      //   url: url,
-      //   data: params
-      // });
       axios.post(fullUrl, params, headerWrap)
+        .then(function(res){
+          console.log(res.data)
+        });
     },
     reset: function () {
       var _this = this;

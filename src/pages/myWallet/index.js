@@ -1,4 +1,4 @@
-Vue.use(vuePlugin);
+Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {
@@ -8,6 +8,7 @@ var app = new Vue({
       healthBalance: 2000,//健康类余额
       happyBalance: 3000,//快乐类余额
       commonBalance: 4000,//通用类余额
+      refreshClass:false
     }
   },
   methods: {
@@ -15,7 +16,14 @@ var app = new Vue({
 
     },
     refresh(){
-      this.fetchWalletData();
+      var _this = this;
+      _this.refreshClass = true;
+      var timer = setTimeout(function(){
+        clearInterval(timer);
+        _this.refreshClass = false;
+      },1000);
+
+      _this.fetchWalletData();
     }
   },
   mounted: function () {

@@ -1,7 +1,7 @@
-var vuePlugin = {
+window.vuePlugin = {
   install: function (Vue) {
     Vue.directive('red', {
-      inserted(el, binding, vnode) {
+      inserted:function(el, binding, vnode) {
         var context = vnode.context;
         // context.myFun('al');
         el.style.color = '#E7442E';
@@ -28,7 +28,7 @@ var vuePlugin = {
       var seconds = (date.getSeconds() + 1) < 10 ? '0' + (date.getSeconds()) : (date.getSeconds());
       var formatDate = [year, month, day];
       var formatTime = [hours, minutes, seconds];
-      return `${formatDate.join('/')} ${formatTime.join(':')}`;
+      return formatDate.join('/') + " " + formatTime.join(':');
     });
     Vue.filter("formatWhether", function (value) {
       var obj = {

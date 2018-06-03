@@ -21,7 +21,7 @@ axios.interceptors.request.use(function (config) {
     background: 'rgba(0,0,0,0.1)'
   });
   //追加一个参数,disable cache
-  config.url = config.url + "?_= " + Date.now();
+  // config.url = config.url + "?_= " + Date.now();
   return config;
 }, function (error) {
   loadingInstance1.close();
@@ -35,8 +35,20 @@ axios.interceptors.request.use(function (config) {
 });
 /* response */
 axios.interceptors.response.use(function (response) {
-  setTimeout(_ => loadingInstance1.close(), 300);
-  let url = response.config.url;
+  setTimeout(function () { loadingInstance1.close() }, 300);
+  // let url = response.config.url;
+  if (response.data.flag != 1) {
+    var errormsg = response.data.errormsg;
+    console.log("%cajax::", "color:red;font-size:20px;", response.data.data, response.config.url, response.data.errormsg);
+    app.$notify.error({
+      title: '请求错误',
+      message: errormsg,
+      offset: 90,
+      duration: 3000
+    });
+  } else {
+    console.log("%cajax::", "color:green;font-size:20px;", response.data.data, response.config.url);
+  }
   return response;
 }, function (error) {
   loadingInstance1.close();

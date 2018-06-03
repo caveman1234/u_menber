@@ -36,7 +36,7 @@ var tableData = [
     field10: "2018-03-03",
   },
 ];
-Vue.use(vuePlugin);
+Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {

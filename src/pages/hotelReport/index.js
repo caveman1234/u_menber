@@ -84,7 +84,7 @@ var tableData = [
     field26: 10000,
   },
 ];
-Vue.use(vuePlugin);
+Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {

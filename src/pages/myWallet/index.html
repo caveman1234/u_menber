@@ -16,29 +16,29 @@
     <div id="u_healthFund">
         <div class="vip-header">
             <div class="title">我的钱包</div>
-            <div class="total"  v-cloak>总余额:{{totalBalance|formatMoney}}</div>
+            <div v-cloak class="total"  v-cloak>总余额:{{totalBalance|formatMoney}}</div>
             <div class="detail">
                 <el-row>
                     <el-col :span="6">
                         <div class="detail-title">生活类余额</div>
-                        <div class="detail-money" v-cloak>{{lifeBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{lifeBalance|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">健康类余额</div>
-                        <div class="detail-money" v-cloak>{{healthBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{healthBalance|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">快乐类余额</div>
-                        <div class="detail-money" v-cloak>{{happyBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{happyBalance|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">通用类余额</div>
-                        <div class="detail-money" v-cloak>{{commonBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{commonBalance|formatMoney}}</div>
                     </el-col>
                 </el-row>
             </div>
             <div @click="refresh" class="refresh">点击刷新我的余额(¥)
-                <i class="el-icon-refresh"></i>
+                <i :class="[refreshClass ? 'cycleAnimat' : '','el-icon-refresh']"></i>
             </div>
         </div>
         <div class="vip-handle-container">

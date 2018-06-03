@@ -6,6 +6,9 @@ var less = require("gulp-less");
 var babel = require("gulp-babel");
 var rename = require("gulp-rename");
 var uglify = require("gulp-uglify");
+var postcss = require("gulp-postcss");
+var autoprefixer = require("gulp-autoprefixer");
+var proxyArr = require("./proxyConfig");
 var distName = "u_member"
 gulp.task('webserver', function () {
     connect.server({
@@ -13,12 +16,7 @@ gulp.task('webserver', function () {
         port: 8080,
         livereload: true,
         middleware: function (connect, opt) {
-            return [
-                proxy('/ocm-web', {
-                    target: 'http://182.150.55.64:8013/',
-                    changeOrigin: true
-                })
-            ]
+            return proxyArr
         }
     });
 });
@@ -27,18 +25,25 @@ gulp.task("watch:less", function () {
         var lessPath = obj.path;
         gulp.src(lessPath)
             .pipe(less())
+            .pipe(autoprefixer({
+                browsers: ['last 2 versions'],
+                cascade: false
+            }))
             .pipe(gulp.dest(path.resolve(lessPath, "..")));
     });
 });
 gulp.task("pack:js", function () {
-    gulp.src("src/pages/**/*.js", { base: "src" })
+    gulp.src([
+        "src/pages/**/*.js",
+    ], { base: "src" })
         .pipe(rename(function (path) {
             // path.dirname += "/ciao";
             // path.basename += "-0.0.1";
             // path.extname = ".md";
         }))
         .pipe(babel({
-            presets: ['env']
+            presets: ['env'],
+            plugins: ["transform-remove-strict-mode"]
         }))
         .pipe(uglify())
         .pipe(gulp.dest(distName));
@@ -47,11 +52,12 @@ gulp.task("pack:js", function () {
 });
 gulp.task("pack:others", function () {
     gulp.src([
-        "src/**/*.html", 
-        "src/**/*.css",
-        "src/css/fonts/*"
-    ],
-    { base: "src" })
+        // "src/**/*.html", 
+        // "src/**/*.css",
+        "src/css/**/**",
+        "src/pages/**",
+        "!src/pages/**/*.js"
+    ], { base: "src" })
         .pipe(gulp.dest(distName));
 });
 gulp.task("pack", ["pack:js", "pack:others"])
