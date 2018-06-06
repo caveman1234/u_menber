@@ -1,3 +1,23 @@
+var tableData = [
+  {
+    mid: '1',
+    realname: '张三',
+    phone: '13666666666',
+    field3: 3
+  },
+  {
+    mid: '2',
+    realname: '李四',
+    phone: '13666666667',
+    field3: 4
+  },
+  {
+    mid: '3',
+    realname: '王五',
+    phone: '13666666668',
+    field3: 5
+  },
+];
 Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
@@ -9,10 +29,10 @@ var app = new Vue({
         totalCount: 0
       },
       formData: {
-        name: '',
+        realname: '',
         phone: ''
       },
-      tableData: []
+      tableData: tableData
     }
   },
   methods: {
@@ -137,7 +157,7 @@ var app = new Vue({
     },
   },
   mounted: function () {
-    this.onSubmit();
+    // this.onSubmit();
   }
 })
 window.app = app;
