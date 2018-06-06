@@ -120,6 +120,9 @@ var app = new Vue({
           { "name": "define1" },
           { "name": "define2" },
           { "name": "define3" },
+          { "name": "identity_type" },
+          { "name": "identity_num" },
+          { "name": "identity_type" },
         ]
       };
       var encrypted = globalHmacSHA256(params);

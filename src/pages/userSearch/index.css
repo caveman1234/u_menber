@@ -1,0 +1,11 @@
+#u_healthFund .titleContent {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  z-index: 1;
+  background: #efeff4;
+}
+#u_healthFund .userContent {
+  margin-top: 72px;
+}
