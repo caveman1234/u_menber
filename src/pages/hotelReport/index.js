@@ -1,132 +1,124 @@
-var tableData = [
-  {
-    field1: "张三",
-    field2: "13666666661",
-    field3: 10000,
-    field4: 20000,
-    field5: 10000,
-    field6: 10000,
-    field7: 20000,
-    field8: 10000,
-    field9: 10000,
-    field10: 20000,
-    field11: 10000,
-    field12: 10000,
-    field13: 20000,
-    field14: 10000,
-    field15: 10000,
-    field16: 20000,
-    field17: 10000,
-    field18: 10000,
-    field19: 20000,
-    field20: 10000,
-    field21: 10000,
-    field22: 20000,
-    field23: 10000,
-    field24: 10000,
-    field25: 20000,
-    field26: 10000,
-  },
-  {
-    field1: "李四",
-    field2: "13666666662",
-    field3: 10000,
-    field4: 20000,
-    field5: 10000,
-    field6: 10000,
-    field7: 20000,
-    field8: 10000,
-    field9: 10000,
-    field10: 20000,
-    field11: 10000,
-    field12: 10000,
-    field13: 20000,
-    field14: 10000,
-    field15: 10000,
-    field16: 20000,
-    field17: 10000,
-    field18: 10000,
-    field19: 20000,
-    field20: 10000,
-    field21: 10000,
-    field22: 20000,
-    field23: 10000,
-    field24: 10000,
-    field25: 20000,
-    field26: 10000,
-  },
-  {
-    field1: "王二",
-    field2: "13666666663",
-    field3: 10000,
-    field4: 20000,
-    field5: 10000,
-    field6: 10000,
-    field7: 20000,
-    field8: 10000,
-    field9: 10000,
-    field10: 20000,
-    field11: 10000,
-    field12: 10000,
-    field13: 20000,
-    field14: 10000,
-    field15: 10000,
-    field16: 20000,
-    field17: 10000,
-    field18: 10000,
-    field19: 20000,
-    field20: 10000,
-    field21: 10000,
-    field22: 20000,
-    field23: 10000,
-    field24: 10000,
-    field25: 20000,
-    field26: 10000,
-  },
-];
 Vue.use(window.vuePlugin);
 var app = new Vue({
   el: '#u_healthFund',
   data: function () {
     return {
+      pagerInfo: {
+        pageIndex: 1,
+        pageSize: 10,
+        totalCount: 0
+      },
       formData: {
         name: '',
         phone: ''
       },
-      tableData: tableData,
-      currentPage: 0,
+      tableData: []
     }
   },
   methods: {
-    onSubmit: function () {
-      var searchParams = this.formData;
-
-
+    func() {
+      var _this = this;
       var params = {
-        "username": "zhangsan",
-        "phone": "13888888888"
-      };
-      var AccessToken = "NVZBGUcdzvAkf8nrQDbqueX4TjJ5MpaP2IRmE7Si6WHYgF1C";
-      var Secret = "CzwUucfT1RrXhHWKxp35PGYD4BISnmFZ6tVsAQiakvd7MEegJqj8N2yb";
-      var cryptoMsg = JSON.stringify(params);
-      // var encrypted = CryptoJS.SHA256(cryptoMsg, Secret).toString();
-      var encrypted = CryptoJS.AES.encrypt(cryptoMsg, Secret);
-      var url = "/open/mm/member/checkexist/v1";
-      var fullUrl = baseUrl + url + "?access_token=" + AccessToken;
+        "conditions": [
+          {
+            "name": "mid",
+            "value1": 1,
+            "type": "string",
+            "op": "eq"
+          }
+        ],
 
+      };
+      var encrypted = globalHmacSHA256(params);
+      var url = "/open/mm/coupon/mycoupon/v1";//交易记录
+      var fullUrl = url + "?access_token=" + AccessToken;
       var headerWrap = {
         headers: {
           'Content-Type': 'application/json',
           'X-Authorization': encrypted,
-        }
+        },
+        timeout: 2 * 60 * 1000
       }
-      // axios({
-      //   method: 'post',
-      //   headers: headerWrap,
-      //   url: url,
-      //   data: params
-      // });
       axios.post(fullUrl, params, headerWrap)
+        .then(function (res) {
+          var data = res.data.data;
+        });
+    },
+    func1() {
+      var _this = this;
+      var params = {
+        "conditions": [
+          {
+            "name": "mid",
+            "value1": 1,
+            "type": "string",
+            "op": "eq"
+          }
+        ]
+      }
+      var encrypted = globalHmacSHA256(params);
+      var url = "/open/mm/orders/query/v1";//订单
+      var fullUrl = url + "?access_token=" + AccessToken;
+      var headerWrap = {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authorization': encrypted,
+        },
+        timeout: 2 * 60 * 1000
+      }
+      axios.post(fullUrl, params, headerWrap)
+        .then(function (res) {
+          var data = res.data.data;
+        });
+    },
+    onSubmit: function () {
+      var _this = this;
+      var searchParams = this.formData;
+      var params = {
+        pager: {
+          pageIndex: _this.pagerInfo.pageIndex,
+          pageSize: _this.pagerInfo.pageSize,
+        },
+        conditions: [
+          {
+            name: "realname",
+            value1: searchParams.realname,
+            type: "string",
+            op: "like"
+          },
+          {
+            name: "phone",
+            value1: searchParams.phone,
+            type: "string",
+            op: "like"
+          }
+        ],
+        fields: [
+          { "name": "mid" },
+          { "name": "realname" },
+          { "name": "phone" },
+          { "name": "define1" },
+          { "name": "define2" },
+          { "name": "define3" },
+        ]
+      };
+      var encrypted = globalHmacSHA256(params);
+      var url = "/open/mm/member/query/v1";
+      var fullUrl = url + "?access_token=" + AccessToken;
+      var headerWrap = {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Authorization': encrypted,
+        },
+        timeout: 2 * 60 * 1000
+      }
+      axios.post(fullUrl, params, headerWrap)
+        .then(function (res) {
+          var pager = res.data.pager;
+          _this.pagerInfo.totalCount = pager.totalCount;
+          var data = res.data.data;
+          _this.tableData = data;
+        });
     },
     reset: function () {
       var _this = this;
@@ -135,16 +127,17 @@ var app = new Vue({
         _this.formData[v] = '';
       });
     },
-    handleSizeChange: function (val) {
-      console.log(val);
+    handleSizeChange: function (pageSize) {
+      this.pagerInfo.pageSize = pageSize;
+      this.onSubmit();
     },
-    handleCurrentChange: function (val) {
-      console.log(val);
+    handleCurrentChange: function (pageIndex) {
+      this.pagerInfo.pageIndex = pageIndex;
+      this.onSubmit();
     },
   },
   mounted: function () {
-
-
+    this.onSubmit();
   }
 })
 window.app = app;
