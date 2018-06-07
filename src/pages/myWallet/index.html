@@ -16,34 +16,34 @@
     <div id="u_healthFund">
         <div class="vip-header">
             <div class="title">我的钱包</div>
-            <div v-cloak class="total"  v-cloak>总余额:{{totalBalance|formatMoney}}</div>
+            <div v-cloak class="total"  v-cloak>总余额:{{userInfo.totalReset|formatMoney}}</div>
             <div class="detail">
                 <el-row>
                     <el-col :span="6">
                         <div class="detail-title">生活类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{lifeBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define1Reset|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">健康类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{healthBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define2Reset|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">快乐类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{happyBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define3Reset|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">通用类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{commonBalance|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define4Reset|formatMoney}}</div>
                     </el-col>
                 </el-row>
             </div>
-            <div @click="refresh" class="refresh">点击刷新我的余额(¥)
+            <div @click="onSubmit" class="refresh">点击刷新我的余额(¥)
                 <i :class="[refreshClass ? 'cycleAnimat' : '','el-icon-refresh']"></i>
             </div>
         </div>
         <div class="vip-handle-container">
             <div class="vip-handle-item">
-                <el-row type="flex" justify="space-between">
+                <el-row @click.native="dealRecord" type="flex" justify="space-between">
                     <el-col :span="7">
                         <i class="el-icon-tickets icon-style"></i> 交易记录</el-col>
                     <el-col :span="2">
@@ -53,7 +53,7 @@
             </div>
             <div class="divider"></div>
             <div class="vip-handle-item">
-                <el-row type="flex" justify="space-between">
+                <el-row @click.native="accountRecharge" type="flex" justify="space-between">
                     <el-col :span="7">
                         <i class="el-icon-goods icon-style"></i> 账户充值</el-col>
                     <el-col :span="2">
@@ -69,7 +69,7 @@
     <script src="../../js/vue.js"></script>
     <script src="../../js/element-ui.js"></script>
     <script src="../../js/util.js"></script>
-    <!-- <script src="../../js/crypto-js.js"></script> -->
+    <script src="../../js/crypto-js.js"></script>
     <script src="./index.js"></script>
 </body>
 

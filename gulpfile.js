@@ -9,7 +9,7 @@ var uglify = require("gulp-uglify");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("gulp-autoprefixer");
 var proxyArr = require("./proxyConfig");
-var distName = "u_member"
+var distName = "KH"
 gulp.task('webserver', function () {
     connect.server({
         root: ['./'],

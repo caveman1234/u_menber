@@ -26,19 +26,13 @@
                 <el-button type="primary" size="mini" @click="onSubmit">搜索</el-button>
             </el-form-item>
         </el-form>
-        <!-- <el-button @click="func">我的优惠券查询</el-button>
-        <el-button @click="func1">订单</el-button> -->
+        <!-- <el-button @click="func">我的优惠券查询</el-button> -->
+        <!-- <el-button @click="func1">订单</el-button> -->
         <h2 class="text-center">都喜酒店入住券核销报表</h2>
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column prop="realname" label="会员名称"></el-table-column>
             <el-table-column prop="phone" label="会员手机"></el-table-column>
-            <el-table-column label="本月核销次数" align="center">
-                <template slot-scope="scope">
-                    <div>
-                        {{scope.row.field3 | formatMoney}}
-                    </div>
-                </template>
-            </el-table-column>
+            <el-table-column  prop="count" label="本月核销次数" align="center"></el-table-column>
         </el-table>
         <el-pagination 
             @size-change="handleSizeChange" 
@@ -53,7 +47,7 @@
     <script src="../../js/polyfill.js"></script>
     <script src="../../js/plugin.js"></script>
     <script src="../../js/axios.min.js"></script>
-    <script src="../../js/loading.js"></script>
+    <!-- <script src="../../js/loading.js"></script> -->
     <script src="../../js/vue.js"></script>
     <script src="../../js/element-ui.js"></script>
     <script src="../../js/util.js"></script>

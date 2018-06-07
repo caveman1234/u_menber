@@ -280,7 +280,7 @@ var app = new Vue({
     },
   },
   mounted: function () {
-    // this.onSubmit();
+    this.onSubmit();
   }
 })
 window.app = app;

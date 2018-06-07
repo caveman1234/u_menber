@@ -7,6 +7,13 @@ window.vuePlugin = {
         el.style.color = '#E7442E';
       }
     });
+    Vue.directive('gray', {
+      inserted:function(el, binding, vnode) {
+        var context = vnode.context;
+        // context.myFun('al');
+        el.style.color = '#999999';
+      }
+    });
     /* 格式化日期 */
     Vue.filter('formatDate', function (value) {
       if (!value) return '';

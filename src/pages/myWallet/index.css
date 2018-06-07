@@ -49,8 +49,8 @@
   font-weight: bold;
 }
 #u_healthFund .cycleAnimat {
-  -webkit-animation: refresh 1s;
-  animation: refresh 1s;
+  -webkit-animation: refresh 1s infinite;
+  animation: refresh 1s infinite;
   -webkit-animation-timing-function: ease-in-out;
   animation-timing-function: ease-in-out;
 }
