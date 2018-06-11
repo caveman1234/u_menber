@@ -9,7 +9,7 @@ var uglify = require("gulp-uglify");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("gulp-autoprefixer");
 var proxyArr = require("./proxyConfig");
-var distName = "KH"
+var distName = "KH";
 gulp.task('webserver', function () {
     connect.server({
         root: ['./'],
@@ -47,7 +47,10 @@ gulp.task("pack:js", function () {
         }))
         .pipe(uglify())
         .pipe(gulp.dest(distName));
-    gulp.src("src/js/*.js", { base: "src" })
+    gulp.src(
+        [
+            "src/js/*.js",
+        ], { base: "src" })
         .pipe(gulp.dest(distName))
 });
 gulp.task("pack:others", function () {
@@ -56,7 +59,8 @@ gulp.task("pack:others", function () {
         // "src/**/*.css",
         "src/css/**/**",
         "src/pages/**",
-        "!src/pages/**/*.js"
+        "!src/pages/**/*.js",
+        "!src/pages/**/*.less"
     ], { base: "src" })
         .pipe(gulp.dest(distName));
 });

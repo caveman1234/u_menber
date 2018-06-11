@@ -46,7 +46,7 @@ window.vuePlugin = {
     });
     Vue.filter('formatMoney', function (value) {
       if (value === null || value === '' || value === undefined) {
-        return '';
+        return '¥0.00';
       }
       if (value === 0) {
         return '¥0.00';

@@ -118,7 +118,7 @@
             @size-change="handleSizeChange" 
             @current-change="handleCurrentChange" 
             :current-page="pagerInfo.pageIndex" 
-            :page-sizes="[2]"
+            :page-sizes="[10,20,50]"
             :page-size="pagerInfo.pageSize" 
             layout="total, sizes, prev, pager, next, jumper" 
             :total="pagerInfo.totalCount">
@@ -128,7 +128,7 @@
     <script src="../../js/plugin.js"></script>
     <script src="../../js/crypto-js.js"></script>
     <script src="../../js/axios.min.js"></script>
-    <!-- <script src="../../js/loading.js"></script> -->
+    <script src="../../js/loading.js"></script>
     <script src="../../js/vue.js"></script>
     <script src="../../js/element-ui.js"></script>
     <script src="../../js/util.js"></script>

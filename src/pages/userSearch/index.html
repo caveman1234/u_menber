@@ -30,6 +30,7 @@
             </div>
         </div>
         <div class="userContent">
+            <div v-if="isLoading" class="text-center" v-gray>正在加载......</div>
             <template v-if="users.length > 0">
                 <div v-for="(item,i) in users" :key="i" class="item mt-5">
                     <ul class="mui-table-view">
@@ -48,7 +49,7 @@
                         <li class="mui-table-view-cell">
                             <div class="mui-row">
                                 <div class="mui-col-xs-4 mui-col-sm-4">{{item.identity_type == 1 ? "身份证" : "未知证件"}}:</div>
-                                <div class="mui-col-xs-8 mui-col-sm-8">{{item.identity_num || "暂无"}}</div>
+                                <div class="mui-col-xs-8 mui-col-sm-8">{{item.identity_num ? item.identity_num.replace(item.identity_num.slice(6,14),"********") : "暂无"}}</div>
                             </div>
                         </li>
                     </ul>
@@ -61,7 +62,7 @@
         </div>
     </div>
 </body>
-<!-- <script src="../../js/polyfill.js"></script> -->
+<script src="../../js/polyfill.js"></script>
 <script src="../../js/mui.min.js"></script>
 <script src="../../js/plugin.js"></script>
 <script src="../../js/axios.min.js"></script>

@@ -15,8 +15,8 @@
     <div id="u_healthFund">
         <el-row>
             <el-col :span="12">
-                <el-menu>
-                    <el-submenu>
+                <el-menu :default-openeds="[0]">
+                    <el-submenu :index="0">
                         <template slot="title">
                             <i class="el-icon-location"></i>
                             <span>导航一</span>
@@ -51,17 +51,18 @@
                         name: "康养基金报表"
                     },
                     {
-                        url: "/src/pages/healthRecord/index.html",
-                        name: "健康记录报表"
-                    },
-                    {
                         url: "/src/pages/hotelReport/index.html",
                         name: "都喜酒店入住券核销报表"
                     },
-                    {
-                        url: "/src/pages/houseInfo/index.html",
-                        name: "房产信息"
-                    },
+                    // {
+                    //     url: "/src/pages/healthRecord/index.html",
+                    //     name: "健康记录报表"
+                    // },
+                    
+                    // {
+                    //     url: "/src/pages/houseInfo/index.html",
+                    //     name: "房产信息"
+                    // },
                     {
                         url: "/src/pages/myWallet/index.html",
                         name: "会员中心"

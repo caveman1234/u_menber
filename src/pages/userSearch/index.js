@@ -3,31 +3,36 @@ var app = new Vue({
   el: '#u_healthFund',
   data: function () {
     return {
-      users:[]
+      users: [],
+      isLoading: false,
+      pageInfo: {
+        pageIndex: 1,
+        pageSize: 10,
+      }
     }
   },
   methods: {
-    search: function () {
+    fetchData: function () {
       var _this = this;
       var searchInp = String(this.$refs.searchInp.value).trim();
-      if(searchInp == ""){
-        return;
-      }
+      // if (searchInp == "") {
+      //   return;
+      // }
       var realname = "";
       var phone = "";
       var phoneRegExp = /^\d+$/;
       var realnameRegExp = /^[^\d]+$/;
-      if(phoneRegExp.test(searchInp)){
+      if (phoneRegExp.test(searchInp)) {
         phone = searchInp;
         realname = "";
-      }else{
+      } else {
         realname = searchInp;
         phone = "";
       }
       var params = {
         pager: {
-          pageIndex: 0,
-          pageSize: 15,
+          pageIndex: _this.pageIndex,
+          pageSize: 10,
         },
         conditions: [
           {
@@ -61,19 +66,44 @@ var app = new Vue({
         },
         timeout: 2 * 60 * 1000
       }
-      axios.post(fullUrl, params, headerWrap)
+      return axios.post(fullUrl, params, headerWrap)
         .then(function (res) {
-          if(res.data.flag == 1){
-            _this.users = res.data.data;
-          }else{
-            _this.users = [];
+          if (res.data.flag == 1) {
+            return res.data.data;
+          } else {
+            return [];
           }
         });
+    },
+    search: async function () {
+      var _this = this;
+      _this.users = [];
+      _this.isLoading = true;
+      var users = await _this.fetchData();
+      _this.users = users;
+      _this.isLoading = false;
     }
-
   },
   mounted: function () {
-
+    var _this = this;
+    _this.search();
+    // mui.init({
+    //   pullRefresh : {
+    //     container:".userContent",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+    //     up : {
+    //       height:50,//可选.默认50.触发上拉加载拖动距离
+    //       auto:true,//可选,默认false.自动上拉加载一次
+    //       contentrefresh : "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+    //       contentnomore:'没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+    //       callback :function(){//必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+    //         _this.pageInfo.pageIndex++;
+    //         debugger
+    //         _this.search();
+    //         // this.endPullupToRefresh(true|false);
+    //       }, 
+    //     }
+    //   }
+    // })
   }
 })
 window.app = app;
