@@ -27,94 +27,94 @@
         </el-form>
         <h2 class="text-center">康养基金报表</h2>
         <el-table :data="tableData" border style="width: 100%">
-            <el-table-column prop="realname" label="会员名称" width="150"></el-table-column>
+            <el-table-column prop="uName" label="会员名称" width="150"></el-table-column>
             <el-table-column prop="phone" label="会员手机号" width="150"></el-table-column>
-            <el-table-column prop="define1" label="生活类智慧康养基金总额" width="200">
+            <el-table-column prop="lifeTotal" label="生活类智慧康养基金总额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{(scope.row.define1 || 0) | formatMoney}}
+                        {{(scope.row.lifeTotal || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define1Balance" label="生活类智慧康养基金使用额" width="200">
+            <el-table-column prop="lifeUsed" label="生活类智慧康养基金使用额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{scope.row.define1Balance | formatMoney}}
+                        {{scope.row.lifeUsed | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="" label="生活类智慧康养基金剩余额" width="200">
+            <el-table-column prop="lifeResidue" label="生活类智慧康养基金剩余额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{((scope.row.define1 || 0) - scope.row.define1Balance) | formatMoney}}
+                        {{(scope.row.lifeResidue || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define2" label="健康类智慧康养基金总额" width="200">
+            <el-table-column prop="healthTotal" label="健康类智慧康养基金总额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{(scope.row.define2 || 0) | formatMoney}}
+                        {{(scope.row.healthTotal || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define2Balance" label="健康类智慧康养基金使用额" width="200">
+            <el-table-column prop="healthUsed" label="健康类智慧康养基金使用额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{scope.row.define2Balance | formatMoney}}
+                        {{scope.row.healthUsed | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="field8" label="健康类智慧康养基金剩余额" width="200">
+            <el-table-column prop="healthResidue" label="健康类智慧康养基金剩余额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{((scope.row.define2 || 0) - scope.row.define2Balance) | formatMoney}}
+                        {{(scope.row.healthResidue || 0)  | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define3" label="快乐类智慧康养基金总额" width="200">
+            <el-table-column prop="happyTotal" label="快乐类智慧康养基金总额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{(scope.row.define3 || 0) | formatMoney}}
+                        {{(scope.row.happyTotal || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define3Balance" label="快乐类智慧康养基使用额" width="200">
+            <el-table-column prop="happyUsed" label="快乐类智慧康养基使用额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{scope.row.define3Balance | formatMoney}}
+                        {{scope.row.happyUsed | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="field11" label="快乐类智慧康养基剩余额" width="200">
+            <el-table-column prop="happyResidue" label="快乐类智慧康养基剩余额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{((scope.row.define3 || 0) - scope.row.define3Balance) | formatMoney}}
+                        {{(scope.row.happyResidue || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define4" label="通用余额总额" width="200">
+            <el-table-column prop="commonTotal" label="通用余额总额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{(scope.row.define4 || 0) | formatMoney}}
+                        {{(scope.row.commonTotal || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="define4Balance" label="通用余额消费金额" width="200">
+            <el-table-column prop="commonUsed" label="通用余额消费金额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{scope.row.define4Balance | formatMoney}}
+                        {{scope.row.commonUsed | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
-            <el-table-column prop="field14" label="通用余额剩余额" width="200">
+            <el-table-column prop="commonResidue" label="通用余额剩余额" width="200">
                 <template slot-scope="scope">
                     <div>
-                        {{((scope.row.define4 || 0) - scope.row.define4Balance) | formatMoney}}
+                        {{(scope.row.commonResidue || 0) | formatMoney}}
                     </div>
                 </template>
             </el-table-column>
         </el-table>
-        <el-pagination 
+        <!-- <el-pagination 
             @size-change="handleSizeChange" 
             @current-change="handleCurrentChange" 
             :current-page="pagerInfo.pageIndex" 
@@ -122,7 +122,7 @@
             :page-size="pagerInfo.pageSize" 
             layout="total, sizes, prev, pager, next, jumper" 
             :total="pagerInfo.totalCount">
-        </el-pagination>
+        </el-pagination> -->
     </div>
     <script src="../../js/polyfill.js"></script>
     <script src="../../js/plugin.js"></script>

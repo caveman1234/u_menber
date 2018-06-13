@@ -26,7 +26,7 @@
         <div class="titleContent">
             <h4 class="text-center">会员查询</h4>
             <div class="mui-input-row mui-search">
-                <input @keyup.enter="search" ref="searchInp" type="search" class="mui-input-clear" placeholder="手机号/姓名">
+                <input @keyup.enter="search" ref="searchInp" type="search" class="mui-input-clear" placeholder="手机号">
             </div>
         </div>
         <div class="userContent">
@@ -48,7 +48,7 @@
                         </li>
                         <li class="mui-table-view-cell">
                             <div class="mui-row">
-                                <div class="mui-col-xs-4 mui-col-sm-4">{{item.identity_type == 1 ? "身份证" : "未知证件"}}:</div>
+                                <div class="mui-col-xs-4 mui-col-sm-4">身份证:</div>
                                 <div class="mui-col-xs-8 mui-col-sm-8">{{item.identity_num ? item.identity_num.replace(item.identity_num.slice(6,14),"********") : "暂无"}}</div>
                             </div>
                         </li>

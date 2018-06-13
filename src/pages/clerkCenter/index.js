@@ -11,49 +11,29 @@ var app = new Vue({
     fetchData: function () {
       var _this = this;
       var phoneSearch = _this.$refs.searchInp.value;
-      var params = {
-        pager: {
-          pageIndex: 1,
-          pageSize: 5,
-        },
-        fields: [
-          { name: "mid" },
-          { name: "realname" },
-          { name: "phone" },
-          { name: "define1" },
-          { name: "define2" },
-          { name: "define3" },
-          { name: "define4" },
-        ],
-        conditions: [
-          // {
-          //   name: "realname",
-          //   value1: searchParams.realname,
-          //   type: "string",
-          //   op: "eq"
-          // },
-          {
-            name: "phone",
-            value1: phoneSearch,
-            type: "string",
-            op: "like"
-          }
-        ]
+      var _this = this;
+      var paramsWrap = {
+        params: {
+          phone: phoneSearch
+        }
       };
-      var encrypted = globalHmacSHA256(params);
-      var url = "/open/mm/member/query/v1";
-      var fullUrl = url + "?access_token=" + AccessToken;
+      Object.keys(paramsWrap.params).forEach(function (key) {
+        if (!paramsWrap.params[key]) {
+          delete paramsWrap.params[key];
+        }
+      });
+      var fullUrl = "/vipkh/ru/get";
       var headerWrap = {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Authorization': encrypted,
-        },
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'X-Authorization': encrypted,
+        // },
         timeout: 2 * 60 * 1000
       }
-      return axios.post(fullUrl, params, headerWrap)
+      return axios.get(fullUrl, paramsWrap, headerWrap)
         .then(function (res) {
           if (res.data.flag == 1) {
-            return res.data.data;
+            return (res.data.data ? [res.data.data] : []);
           } else {
             return [];
           }
@@ -64,6 +44,28 @@ var app = new Vue({
       _this.tableData = [];
       _this.isLoading = true;
       var tableData = await _this.fetchData();
+      tableData = tableData.map(function (v) {
+        var divide3 = (v.kyAmount / 3).toFixed(2);
+        var divide4 = (v.kyAmount / 4).toFixed(2);
+        return {
+          uName: v.uName,
+          phone: v.phone,
+          lifeTotal: divide3,
+          lifeUsed: divide3 - v.lifeFund,
+          lifeResidue: v.lifeFund,
+          healthTotal: divide3,
+          healthUsed: divide3 - v.healthyFund,
+          healthResidue: v.healthyFund,
+          happyTotal: divide4,
+          happyUsed: divide4 - v.funFund,
+          happyResidue: v.funFund,
+          commonTotal: v.cy_amount,
+          commonUsed: ((v.cy_amount || 0) - v.currencyAmount),
+          commonResidue: v.currencyAmount,
+          totalResidue: (v.currencyAmount + v.funFund + v.lifeFund),
+          imgUrl: v.imgUrl
+        }
+      });
       _this.tableData = tableData;
       _this.isLoading = false;
     },

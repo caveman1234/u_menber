@@ -14,13 +14,13 @@
 <body>
     <div id="u_healthFund">
         <el-form ref="searchForm" :inline="true" :model="formData" label-width="100px" class="demo-form-inline">
-            <el-form-item label="会员名称">
-                <el-input class="width-150" v-model="formData.realname" size="mini" placeholder="会员名称"></el-input>
-            </el-form-item>
             <el-form-item label="手机号码">
                 <el-input class="width-150" v-model="formData.phone" size="mini" placeholder="手机号码"></el-input>
             </el-form-item>
-
+            <el-form-item label="日期">
+                <el-date-picker v-model="formData.rangeDate" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期" size="mini">
+                </el-date-picker>
+            </el-form-item>
             <el-form-item>
                 <el-button type="plain" size="mini" @click="reset">清空</el-button>
                 <el-button type="primary" size="mini" @click="onSubmit">搜索</el-button>
@@ -32,16 +32,9 @@
         <el-table :data="tableData" border style="width: 100%">
             <el-table-column prop="realname" label="会员名称"></el-table-column>
             <el-table-column prop="phone" label="会员手机"></el-table-column>
-            <el-table-column  prop="count" label="本月核销次数" align="center"></el-table-column>
+            <el-table-column prop="count" label="核销次数" align="center"></el-table-column>
         </el-table>
-        <el-pagination 
-            @size-change="handleSizeChange" 
-            @current-change="handleCurrentChange" 
-            :current-page="pagerInfo.pageIndex" 
-            :page-sizes="[10, 20, 50]"
-            :page-size="pagerInfo.pageSize" 
-            layout="total, sizes, prev, pager, next, jumper" 
-            :total="pagerInfo.totalCount">
+        <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="pagerInfo.pageIndex" :page-sizes="[10, 20, 50]" :page-size="pagerInfo.pageSize" layout="total, sizes, prev, pager, next, jumper" :total="pagerInfo.totalCount">
         </el-pagination>
     </div>
     <script src="../../js/polyfill.js"></script>

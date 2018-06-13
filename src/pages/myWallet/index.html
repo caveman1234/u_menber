@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>会员中心</title>
+    <title>我的钱包</title>
     <meta charset="UTF-8">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="telephone=no,email=no" name="format-detection">
@@ -16,24 +16,24 @@
     <div id="u_healthFund">
         <div class="vip-header">
             <div class="title">我的钱包</div>
-            <div v-cloak class="total"  v-cloak>总余额:{{userInfo.totalReset|formatMoney}}</div>
+            <div v-cloak class="total"  v-cloak>总余额:{{userInfo.totalMoney|formatMoney}}</div>
             <div class="detail">
                 <el-row>
                     <el-col :span="6">
                         <div class="detail-title">生活类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define1Reset|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.lifeFund|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">健康类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define2Reset|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.healthyFund|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">快乐类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define3Reset|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.funFund|formatMoney}}</div>
                     </el-col>
                     <el-col :span="6">
                         <div class="detail-title">通用类余额</div>
-                        <div v-cloak class="detail-money" v-cloak>{{userInfo.define4Reset|formatMoney}}</div>
+                        <div v-cloak class="detail-money" v-cloak>{{userInfo.currencyAmount|formatMoney}}</div>
                     </el-col>
                 </el-row>
             </div>
@@ -54,9 +54,9 @@
             <div class="divider"></div>
             <div class="vip-handle-item">
                 <el-row @click.native="accountRecharge" type="flex" justify="space-between">
-                    <el-col :span="7">
+                    <el-col @click.native="dealRecord" :span="7">
                         <i class="el-icon-goods icon-style"></i> 账户充值</el-col>
-                    <el-col :span="2">
+                    <el-col @click.native="accountRecharge" :span="2">
                         <i class="el-icon-arrow-right"></i>
                     </el-col>
                 </el-row>

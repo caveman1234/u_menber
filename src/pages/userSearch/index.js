@@ -14,62 +14,26 @@ var app = new Vue({
   methods: {
     fetchData: function () {
       var _this = this;
-      var searchInp = String(this.$refs.searchInp.value).trim();
-      // if (searchInp == "") {
-      //   return;
-      // }
-      var realname = "";
-      var phone = "";
-      var phoneRegExp = /^\d+$/;
-      var realnameRegExp = /^[^\d]+$/;
-      if (phoneRegExp.test(searchInp)) {
-        phone = searchInp;
-        realname = "";
-      } else {
-        realname = searchInp;
-        phone = "";
-      }
-      var params = {
-        pager: {
-          pageIndex: _this.pageIndex,
-          pageSize: 10,
-        },
-        conditions: [
-          {
-            name: "realname",
-            value1: realname,
-            type: "string",
-            op: "like"
-          },
-          {
-            name: "phone",
-            value1: phone,
-            type: "string",
-            op: "like"
-          }
-        ],
-        fields: [
-          { "name": "mid" },
-          { "name": "realname" },
-          { "name": "phone" },
-          { "name": "identity_type" },//1 身份证
-          { "name": "identity_num" },
-        ]
+      var phone = String(this.$refs.searchInp.value).trim();
+      var paramsWrap = {
+        params: {
+          pageIndex: _this.pageInfo.pageIndex,
+          pageSize: _this.pageInfo.pageSize,
+          phone: phone
+        }
       };
-      var encrypted = globalHmacSHA256(params);
-      var url = "/open/mm/member/query/v1";
-      var fullUrl = url + "?access_token=" + AccessToken;
+      var fullUrl = "/vipkh/ru/getMemberInfo";
       var headerWrap = {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Authorization': encrypted,
-        },
+        // headers: {
+        //   'Content-Type': 'application/json',
+        //   'X-Authorization': encrypted,
+        // },
         timeout: 2 * 60 * 1000
       }
-      return axios.post(fullUrl, params, headerWrap)
+      return axios.get(fullUrl, paramsWrap, headerWrap)
         .then(function (res) {
           if (res.data.flag == 1) {
-            return res.data.data;
+            return (res.data.data ? res.data.data : []);
           } else {
             return [];
           }
@@ -80,6 +44,14 @@ var app = new Vue({
       _this.users = [];
       _this.isLoading = true;
       var users = await _this.fetchData();
+      users = users.map(function (v) {
+        return {
+          realname: v.realname,
+          phone: v.phone,
+          identity_type: v.identity_type,
+          identity_num: v.identity_num,
+        }
+      });
       _this.users = users;
       _this.isLoading = false;
     }
