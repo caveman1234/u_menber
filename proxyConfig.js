@@ -7,5 +7,9 @@ module.exports = [
   proxy('/vipkh', {
     target: 'http://vip.cdkhms.com:8080/',
     changeOrigin: true
-  })
+  }),
+  // proxy('/vipkh', {
+  //   target: 'http://localhost:8080/',
+  //   changeOrigin: true
+  // })
 ];

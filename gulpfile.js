@@ -13,7 +13,7 @@ var distName = "KH";
 gulp.task('webserver', function () {
     connect.server({
         root: ['./'],
-        port: 8080,
+        port: 8888,
         livereload: true,
         middleware: function (connect, opt) {
             return proxyArr

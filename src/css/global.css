@@ -58,3 +58,18 @@ body{
   font-size: 12px;
   color: #333;
 }
+.el-button--primary {
+  color: #fff;
+  background-color: #ff9d34;
+  border-color: #ff9d34;
+}
+.el-button:focus, .el-button:hover {
+  color: #1f2021;
+  border-color: #e6ca5f;
+  background-color: #f9f6eb;
+}
+.el-button--primary:focus, .el-button--primary:hover {
+  color: white;
+  background: #ea8f2d;
+  border-color: #ff9d34;
+}

@@ -55,20 +55,22 @@ var app = new Vue({
       var _this = this;
       var tableData = await _this.fetchData();
       tableData = tableData.map(function (v) {
-        var divide3 = (v.kyAmount / 3).toFixed(2);
-        var divide4 = (v.kyAmount / 4).toFixed(2);
         return {
           uName: v.uName,
           phone: v.phone,
-          lifeTotal: divide3,
-          lifeUsed: divide3 - v.lifeFund,
+
+          lifeTotal: (v.lifeAmount || 0),
+          lifeUsed: (v.lifeAmount || 0) - v.lifeFund,
           lifeResidue: v.lifeFund,
-          healthTotal: divide3,
-          healthUsed: divide3 - v.healthyFund,
+
+          healthTotal: (v.HealthAmount || 0),
+          healthUsed: (v.HealthAmount || 0) - v.healthyFund,
           healthResidue: v.healthyFund,
-          happyTotal: divide4,
-          happyUsed: divide4 - v.funFund,
+
+          happyTotal: (v.funAmount || 0),
+          happyUsed: (v.funAmount || 0) - v.funFund,
           happyResidue: v.funFund,
+
           commonTotal: v.cy_amount,
           commonUsed: ((v.cy_amount || 0) - v.currencyAmount),
           commonResidue: v.currencyAmount,

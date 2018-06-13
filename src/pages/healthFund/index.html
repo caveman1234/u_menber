@@ -2,13 +2,14 @@
 <html>
 
 <head>
-    <title>康养基金报表</title>
+    <title>余额查询</title>
     <meta charset="UTF-8">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="telephone=no,email=no" name="format-detection">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover">
     <link rel="stylesheet" href="../../css/element-ui.css">
     <link rel="stylesheet" href="../../css/global.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
@@ -25,8 +26,8 @@
                 <el-button type="primary" size="mini" @click="onSubmit">搜索</el-button>
             </el-form-item>
         </el-form>
-        <h2 class="text-center">康养基金报表</h2>
-        <el-table :data="tableData" border style="width: 100%">
+        <h2 class="text-center">余额查询</h2>
+        <el-table :data="tableData" style="width: 100%">
             <el-table-column prop="uName" label="会员名称" width="150"></el-table-column>
             <el-table-column prop="phone" label="会员手机号" width="150"></el-table-column>
             <el-table-column prop="lifeTotal" label="生活类智慧康养基金总额" width="200">
