@@ -62,7 +62,7 @@ var app = new Vue({
           commonTotal: v.cy_amount,
           commonUsed: ((v.cy_amount || 0) - v.currencyAmount),
           commonResidue: v.currencyAmount,
-          totalResidue: (v.currencyAmount + v.funFund + v.lifeFund),
+          totalResidue: (v.currencyAmount + v.funFund + v.lifeFund + v.healthyFund),
           imgUrl: v.imgUrl
         }
       });
