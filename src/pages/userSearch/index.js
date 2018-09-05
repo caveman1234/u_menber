@@ -8,6 +8,9 @@ var app = new Vue({
       pageInfo: {
         pageIndex: 1,
         pageSize: 10,
+      },
+      info:{
+        name:"name"
       }
     }
   },

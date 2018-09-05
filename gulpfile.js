@@ -10,6 +10,8 @@ var postcss = require("gulp-postcss");
 var autoprefixer = require("gulp-autoprefixer");
 var proxyArr = require("./proxyConfig");
 var distName = "KH";
+var jq = require("dr9527");
+console.log("jq::",jq)
 gulp.task('webserver', function () {
     connect.server({
         root: ['./'],

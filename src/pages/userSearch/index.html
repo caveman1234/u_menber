@@ -26,7 +26,7 @@
         <div class="titleContent">
             <h4 class="text-center">会员查询</h4>
             <div class="mui-input-row mui-search">
-                <input @keyup.enter="search" ref="searchInp" type="search" class="mui-input-clear" placeholder="手机号">
+                <input @keyup.enter="search" ref="searchInp" type="search" class="mui-input-clear" placeholder="请输入手机号码">
             </div>
         </div>
         <div class="userContent">
@@ -58,6 +58,9 @@
             <template v-else>
                 <h5 class="text-center">暂无数据</h5>
             </template>
+            <div>
+                <h1>{{info.name}}</h1>
+            </div>
 
         </div>
     </div>

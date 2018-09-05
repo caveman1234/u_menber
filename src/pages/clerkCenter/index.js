@@ -61,8 +61,8 @@ var app = new Vue({
           happyUsed: (v.funAmount || 0) - v.funFund,
           happyResidue: v.funFund,
 
-          commonTotal: v.cy_amount,
-          commonUsed: ((v.cy_amount || 0) - v.currencyAmount),
+          commonTotal: v.cyAmount,
+          commonUsed: ((v.cyAmount || 0) - v.currencyAmount),
           commonResidue: v.currencyAmount,
           totalResidue: (v.currencyAmount + v.funFund + v.lifeFund + v.healthyFund),
           imgUrl: v.imgUrl

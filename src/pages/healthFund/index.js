@@ -71,8 +71,8 @@ var app = new Vue({
           happyUsed: (v.funAmount || 0) - v.funFund,
           happyResidue: v.funFund,
 
-          commonTotal: v.cy_amount,
-          commonUsed: ((v.cy_amount || 0) - v.currencyAmount),
+          commonTotal: v.cyAmount,
+          commonUsed: ((v.cyAmount || 0) - v.currencyAmount),
           commonResidue: v.currencyAmount,
         }
       });
@@ -94,7 +94,7 @@ var app = new Vue({
     },
   },
   mounted: function () {
-    this.onSubmit();
+    // this.onSubmit();
   }
 })
 window.app = app;
