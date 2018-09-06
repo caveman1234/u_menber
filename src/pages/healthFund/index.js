@@ -45,7 +45,7 @@ var app = new Vue({
         .then(function (res) {
           if (res.data.flag == 1) {
             _this.pagerInfo.totalCount = res.data.count || 0;
-            return (res.data.data ? [res.data.data] : []);
+            return (res.data.data ? res.data.data : []);
           } else {
             return [];
           }
@@ -53,6 +53,7 @@ var app = new Vue({
     },
     onSubmit: async function () {
       var _this = this;
+      _this.tableData = [];
       var tableData = await _this.fetchData();
       tableData = tableData.map(function (v) {
         return {
@@ -60,19 +61,19 @@ var app = new Vue({
           phone: v.phone,
 
           lifeTotal: (v.lifeAmount || 0),
-          lifeUsed: (v.lifeAmount || 0) - v.lifeFund,
+          lifeUsed: (v.lifeAmount || 0) - (v.lifeFund || 0),
           lifeResidue: v.lifeFund,
 
           healthTotal: (v.HealthAmount || 0),
-          healthUsed: (v.HealthAmount || 0) - v.healthyFund,
+          healthUsed: (v.HealthAmount || 0) - (v.healthyFund || 0),
           healthResidue: v.healthyFund,
 
           happyTotal: (v.funAmount || 0),
-          happyUsed: (v.funAmount || 0) - v.funFund,
+          happyUsed: (v.funAmount || 0) - (v.funFund || 0),
           happyResidue: v.funFund,
 
           commonTotal: v.cyAmount,
-          commonUsed: ((v.cyAmount || 0) - v.currencyAmount),
+          commonUsed: ((v.cyAmount || 0) - (v.currencyAmount || 0)),
           commonResidue: v.currencyAmount,
         }
       });
