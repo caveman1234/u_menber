@@ -53,7 +53,7 @@ var app = new Vue({
     },
     onSubmit: async function () {
       var _this = this;
-      if(!this.formData.phone || !this.formData.realname){
+      if(!(this.formData.phone || this.formData.realname)){
         app.$notify({message:"请输入搜索条件",type:"warning"});
         return;
       }
