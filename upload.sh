@@ -1,6 +1,6 @@
 #!/bin/bash
 tarName="KH.tar.gz"
-commitMark=date
+commitMark=`date +"%H时%M分%S秒星期%A"`
 if [[ -f $tarName ]];then
   rm -rf $tarName 
 fi
@@ -9,4 +9,4 @@ gulp pack
 tar -czf  $tarName ./KH
 git add .
 git commit -m ${commitMark}
-# git push
+git push
