@@ -1,6 +1,6 @@
 #!/bin/bash
 tarName="KH.tar.gz"
-commitMark=`date +"%H时%M分%S秒星期%A"`
+commitMark=`date +"%H时%M分%S秒%A"`
 if [[ -f $tarName ]];then
   rm -rf $tarName 
 fi
