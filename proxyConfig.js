@@ -8,6 +8,7 @@ module.exports = [
   //   target: 'http://vip.cdkhms.com:8080/',
   //   changeOrigin: true
   // }),
+  
   proxy('/vipkh', {
     target: 'http://47.93.233.214:8080/',
     changeOrigin: true
