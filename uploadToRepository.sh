@@ -5,6 +5,7 @@ commitMark=`date +"%H时%M分%S秒%A"`
 if [[ -f $tarName ]];then
   rm -rf $tarName 
 fi
+
 git pull
 gulp pack
 tar -czf  $tarName ./KH
